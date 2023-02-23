@@ -17,5 +17,5 @@ def hello():
     if "X-Ms-Client-Principal-Name" not in headers:
         return "Sorry, you are not logged in, please <a href=\".auth/me\">login</a>"
     
-    req=requests.get('.auth/me')
+    req=requests.get('/.auth/me')
     return req.body
