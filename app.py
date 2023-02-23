@@ -17,9 +17,9 @@ def index():
 @app.route("/hello")
 def hello():
     headers: dict=request.headers
-    if "X-Ms-Client-Principal-Name" not in headers:
+    if "X-Ms-Client-Principal-Name" not in headers or "AppServiceAuthSession" not in request.cookies:
         return "Sorry, you are not logged in, please <a href=\".auth/login/aad\">login</a>"
 
     userEmail=headers["X-Ms-Client-Principal-Name"]
-    req=requests.get(f'https://{headers["Disguised-Host"]}/.auth/me')
+    req=requests.get(f'https://{headers["Disguised-Host"]}/.auth/me',cookies=request.cookies)
     return f"<div><p>Hi {userEmail}, <a href=\".auth/logout\">Logout</a></p></div>" + req.text
