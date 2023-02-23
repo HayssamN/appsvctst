@@ -15,7 +15,7 @@ def index():
 def hello():
     headers: dict=request.headers
     if "X-Ms-Client-Principal-Name" not in headers:
-        return "Sorry, you are not logged in, please <a href=\".auth/aad\">login</a>"
+        return "Sorry, you are not logged in, please <a href=\".auth/login/aad\">login</a>"
     
     req=requests.get(f'https://{headers["Disguised-Host"]}/.auth/me')
-    return req.body
+    return "<div><p><a href=\".auth/logout\">Logout</a></p></div>" + req.body
