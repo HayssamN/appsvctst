@@ -30,4 +30,4 @@ def hello():
     json_str = json.dumps(json_body, indent=2)
 
 
-    return f"<div><p>Hi {userEmail}, <a href=\".auth/logout\">Logout</a></p></div><p><h2>Cookies</he></p><pre>{json_str}</pre>"
+    return f"<div><p>Hi {userEmail}, <a href=\".auth/logout\">Logout</a></p></div><p><h2>Cookies</h2></p><pre>{json_str}</pre>"
