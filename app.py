@@ -11,7 +11,7 @@ def index():
         headers_str+=f"<p><b>{k}:</b> {v}</p>"
     for k,v in request.cookies.items():
         cookies_str+=f"<p><b>{k}:</b> {v}</p>"
-    return f"<h3>Cookies</h3> <div>{headers_str} </div><h3>Cookies</h3> <div>{cookies_str} </div>"
+    return f"<h2>Headers</h2> <div>{headers_str} </div><h2>Cookies</h2> <div>{cookies_str} </div>"
 
 
 @app.route("/hello")
