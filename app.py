@@ -18,4 +18,4 @@ def hello():
         return "Sorry, you are not logged in, please <a href=\".auth/login/aad\">login</a>"
     
     req=requests.get(f'https://{headers["Disguised-Host"]}/.auth/me')
-    return "<div><p><a href=\".auth/logout\">Logout</a></p></div>" + req.body
+    return "<div><p><a href=\".auth/logout\">Logout</a></p></div>" + req.text
