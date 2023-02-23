@@ -1,5 +1,5 @@
 from flask import Flask,request
-import requests
+import requests, json
 app = Flask(__name__)
 
 @app.route("/")
@@ -20,6 +20,14 @@ def hello():
     if "X-Ms-Client-Principal-Name" not in headers or "AppServiceAuthSession" not in request.cookies:
         return "Sorry, you are not logged in, please <a href=\".auth/login/aad\">login</a>"
 
+
+
+
     userEmail=headers["X-Ms-Client-Principal-Name"]
+
     req=requests.get(f'https://{headers["Disguised-Host"]}/.auth/me',cookies=request.cookies)
-    return f"<div><p>Hi {userEmail}, <a href=\".auth/logout\">Logout</a></p></div>" + req.text
+    json_body=json.loads(req.text)
+    json_str = json.dumps(json_body, indent=2)
+
+
+    return f"<div><p>Hi {userEmail}, <a href=\".auth/logout\">Logout</a></p></div>" + json_str
