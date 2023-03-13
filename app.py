@@ -21,6 +21,9 @@ def hello():
         return "Sorry, you are not logged in, please <a href=\".auth/login/aad\">login</a>"
 
 
+@app.route('/wbhk', methods=['POST'])
+def wbhk():
+    return f'<h2>Headers</h2><pre>{request.headers}</pre><p>--</p><h2>Payload</h2><pre>{json.dumps(request.get_json(), indent=2)}</pre>'
 
 
     userEmail=headers["X-Ms-Client-Principal-Name"]
