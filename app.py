@@ -23,8 +23,9 @@ def hello():
 
 @app.route('/wbhk', methods=['POST'])
 def wbhk():
-    return "OK"
     print( f'<h2>Headers</h2><pre>{request.headers}</pre><p>--</p><h2>Payload</h2><pre>{json.dumps(request.get_json(), indent=2)}</pre>')
+    return "OK"
+    
 
 
     userEmail=headers["X-Ms-Client-Principal-Name"]
